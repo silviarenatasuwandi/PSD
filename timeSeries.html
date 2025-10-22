@@ -1,0 +1,1801 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Dataset Deret Waktu untuk Prediksi &#8212; SELAMAT DATANG DI MATA KULIAH PROYEK SAINS DATA</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'timeSeries';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/silvi.jpg" class="logo__image only-light" alt="SELAMAT DATANG DI MATA KULIAH PROYEK SAINS DATA - Home"/>
+    <script>document.write(`<img src="_static/silvi.jpg" class="logo__image only-dark" alt="SELAMAT DATANG DI MATA KULIAH PROYEK SAINS DATA - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    SELAMAT DATANG DI MATA KULIAH PROYEK SAINS DATA
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="business_problem.html"><strong>Business Problem</strong></a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="tugas2.html"><strong>TUGAS 2 TRANSFORMASI DATA</strong></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Anomaly_Detection.html"><strong>Data Preprocessing</strong></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="Ecoli.html"><strong>Klasifikasi Menggunakan Naïve Bayes dan Penyeimbangan Dataset (SMOTE, ADASYN)</strong></a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FtimeSeries.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/timeSeries.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Dataset Deret Waktu untuk Prediksi</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#membaca-hasil-ekspor-netcdf-dan-mengekstrak-variabel-no2"><strong>Membaca Hasil Ekspor NetCDF dan Mengekstrak Variabel NO₂</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pengubahan-data-netcdf-ke-csv-untuk-analisis-lanjutan"><strong>Pengubahan Data NetCDF ke CSV untuk Analisis Lanjutan</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#konversi-data-no2-menjadi-format-supervised-learning"><strong>Konversi Data NO₂ Menjadi Format Supervised Learning</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalisasi-data-untuk-model-supervised-learning"><strong>Normalisasi Data untuk Model Supervised Learning</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pemodelan-time-series-no2-menggunakan-k-nearest-neighbors-knn-regressor"><strong>Pemodelan Time Series NO₂ Menggunakan K-Nearest Neighbors (KNN) Regressor</strong></a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="dataset-deret-waktu-untuk-prediksi">
+<h1><strong>Dataset Deret Waktu untuk Prediksi</strong><a class="headerlink" href="#dataset-deret-waktu-untuk-prediksi" title="Link to this heading">#</a></h1>
+<hr class="docutils" />
+<p>Mengambil Data NO₂ Sentinel-5P untuk Daerah Manyar lewat openEO
+Kode berikut dipakai untuk mendapatkan data konsentrasi Nitrogen Dioksida (NO₂) dari satelit Sentinel-5P dengan menggunakan layanan openEO. Data ini digunakan untuk mengevaluasi kualitas udara di area Manyar selama periode tertentu.</p>
+<p>Langkah-langkah proses:</p>
+<ol class="arabic simple">
+<li><p>Autentikasi ke openEO Langkah pertama yaitu melakukan autentikasi ke endpoint openeo. dataspace. copernicus. eu dengan memanfaatkan metode OIDC (OpenID Connect) agar dapat mengakses dataset dari Sentinel-5P.</p></li>
+<li><p>Identifikasi Area Tertentu (AOI) AOI (area yang dianalisis) ditetapkan sebagai poligon yang berisi koordinat lintang dan bujur yang meliputi wilayah Manyar. Area ini menjadi fokus utama dalam pengambilan data.</p></li>
+<li><p>Panggilan Koleksi Data Sentinel-5P Koleksi SENTINEL_5P_L2 dimuat dengan rentang waktu tertentu (seperti dari tanggal mulai hingga tanggal akhir) dan area pembatas (bounding box) sedikit lebih luas dari AOI. Ini dilakukan untuk memperhitungkan resolusi spasial dari Sentinel-5P yang sekitar ±7 km.</p></li>
+<li><p>Agregasi Temporal (Rata-rata Harian) Mengingat data dari Sentinel-5P mungkin tersedia beberapa kali dalam satu hari, proses agregasi temporal dilakukan dengan menghitung rata-rata per hari untuk mendapatkan nilai harian NO₂.</p></li>
+<li><p>Agregasi Spasial Berdasarkan AOI Rata-rata nilai NO₂ kemudian dihitung sesuai dengan area AOI yang telah ditetapkan, yaitu daerah Manyar.</p></li>
+<li><p>Pelaksanaan Batch dan Penyimpanan Hasil Proses pengolahan dilakukan sebagai tugas batch di server openEO, dan hasil akhirnya disimpan dalam format NetCDF (. nc) agar bisa dipakai untuk analisis lebih lanjut, seperti pemodelan deret waktu (time series) atau prediksi mengenai kualitas udara.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>openeo
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting openeo
+  Downloading openeo-0.45.0-py3-none-any.whl.metadata (8.2 kB)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: requests&gt;=2.26.0 in /home/codespace/.local/lib/python3.12/site-packages (from openeo) (2.32.4)
+Requirement already satisfied: urllib3&gt;=1.9.0 in /home/codespace/.local/lib/python3.12/site-packages (from openeo) (2.5.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting shapely&gt;=1.6.4 (from openeo)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Downloading shapely-2.1.2-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (6.8 kB)
+Requirement already satisfied: numpy&gt;=1.17.0 in /usr/local/python/3.12.1/lib/python3.12/site-packages (from openeo) (2.2.6)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting xarray&lt;2025.01.2,&gt;=0.12.3 (from openeo)
+  Downloading xarray-2025.1.1-py3-none-any.whl.metadata (11 kB)
+Requirement already satisfied: pandas&gt;0.20.0 in /home/codespace/.local/lib/python3.12/site-packages (from openeo) (2.3.1)
+Collecting pystac&gt;=1.5.0 (from openeo)
+  Downloading pystac-1.14.1-py3-none-any.whl.metadata (4.7 kB)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting deprecated&gt;=1.2.12 (from openeo)
+  Downloading Deprecated-1.2.18-py2.py3-none-any.whl.metadata (5.7 kB)
+Requirement already satisfied: packaging&gt;=23.2 in /home/codespace/.local/lib/python3.12/site-packages (from xarray&lt;2025.01.2,&gt;=0.12.3-&gt;openeo) (25.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting wrapt&lt;2,&gt;=1.10 (from deprecated&gt;=1.2.12-&gt;openeo)
+  Downloading wrapt-1.17.3-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (6.4 kB)
+Requirement already satisfied: python-dateutil&gt;=2.8.2 in /home/codespace/.local/lib/python3.12/site-packages (from pandas&gt;0.20.0-&gt;openeo) (2.9.0.post0)
+Requirement already satisfied: pytz&gt;=2020.1 in /home/codespace/.local/lib/python3.12/site-packages (from pandas&gt;0.20.0-&gt;openeo) (2025.2)
+Requirement already satisfied: tzdata&gt;=2022.7 in /home/codespace/.local/lib/python3.12/site-packages (from pandas&gt;0.20.0-&gt;openeo) (2025.2)
+Requirement already satisfied: six&gt;=1.5 in /home/codespace/.local/lib/python3.12/site-packages (from python-dateutil&gt;=2.8.2-&gt;pandas&gt;0.20.0-&gt;openeo) (1.17.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: charset_normalizer&lt;4,&gt;=2 in /home/codespace/.local/lib/python3.12/site-packages (from requests&gt;=2.26.0-&gt;openeo) (3.4.2)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /home/codespace/.local/lib/python3.12/site-packages (from requests&gt;=2.26.0-&gt;openeo) (3.10)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /home/codespace/.local/lib/python3.12/site-packages (from requests&gt;=2.26.0-&gt;openeo) (2025.7.9)
+Downloading openeo-0.45.0-py3-none-any.whl (335 kB)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading xarray-2025.1.1-py3-none-any.whl (1.2 MB)
+?25l   <span class=" -Color -Color-C237">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">0.0/1.2 MB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
+   <span class=" -Color -Color-Red">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">1.2/1.2 MB</span> <span class=" -Color -Color-Red">43.3 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hDownloading Deprecated-1.2.18-py2.py3-none-any.whl (10.0 kB)
+Downloading wrapt-1.17.3-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (88 kB)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading pystac-1.14.1-py3-none-any.whl (207 kB)
+Downloading shapely-2.1.2-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (3.1 MB)
+?25l   <span class=" -Color -Color-C237">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">0.0/3.1 MB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   <span class=" -Color -Color-Red">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">3.1/3.1 MB</span> <span class=" -Color -Color-Red">45.3 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25h
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Installing collected packages: wrapt, shapely, pystac, deprecated, xarray, openeo
+?25l
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ━━━━━━╸<span class=" -Color -Color-C237">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">1/6</span> [shapely]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ━━━━━━━━━━━━━<span class=" -Color -Color-C237">╺━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">2/6</span> [pystac]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ━━━━━━━━━━━━━━━━━━━━━━━━━━╸<span class=" -Color -Color-C237">━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">4/6</span> [xarray]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ━━━━━━━━━━━━━━━━━━━━━━━━━━╸<span class=" -Color -Color-C237">━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">4/6</span> [xarray]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ━━━━━━━━━━━━━━━━━━━━━━━━━━╸<span class=" -Color -Color-C237">━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">4/6</span> [xarray]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ━━━━━━━━━━━━━━━━━━━━━━━━━━╸<span class=" -Color -Color-C237">━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">4/6</span> [xarray]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ━━━━━━━━━━━━━━━━━━━━━━━━━━╸<span class=" -Color -Color-C237">━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">4/6</span> [xarray]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ━━━━━━━━━━━━━━━━━━━━━━━━━━╸<span class=" -Color -Color-C237">━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">4/6</span> [xarray]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ━━━━━━━━━━━━━━━━━━━━━━━━━━╸<span class=" -Color -Color-C237">━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">4/6</span> [xarray]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<span class=" -Color -Color-C237">╺━━━━━━</span> <span class=" -Color -Color-Green">5/6</span> [openeo]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<span class=" -Color -Color-C237">╺━━━━━━</span> <span class=" -Color -Color-Green">5/6</span> [openeo]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   <span class=" -Color -Color-Red">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">6/6</span> [openeo]
+?25h
+Successfully installed deprecated-1.2.18 openeo-0.45.0 pystac-1.14.1 shapely-2.1.2 wrapt-1.17.3 xarray-2025.1.1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">[</span><span class=" -Color -Color-Blue">notice</span><span class=" -Color -Color-Bold">]</span> A new release of pip is available: <span class=" -Color -Color-Red">25.1.1</span> -&gt; <span class=" -Color -Color-Green">25.2</span>
+<span class=" -Color -Color-Bold">[</span><span class=" -Color -Color-Blue">notice</span><span class=" -Color -Color-Bold">]</span> To update, run: <span class=" -Color -Color-Green">python3 -m pip install --upgrade pip</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">openeo</span>
+
+<span class="n">connection</span> <span class="o">=</span> <span class="n">openeo</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;openeo.dataspace.copernicus.eu&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">authenticate_oidc</span><span class="p">()</span>
+
+<span class="n">aoi</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Polygon&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;coordinates&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">[</span>
+            <span class="p">[</span>
+                <span class="mf">112.61</span><span class="p">,</span>
+                <span class="o">-</span><span class="mf">7.15</span>
+            <span class="p">],</span>
+            <span class="p">[</span>
+                <span class="mf">112.61</span><span class="p">,</span>
+                <span class="o">-</span><span class="mf">7.15</span>
+            <span class="p">],</span>
+            <span class="p">[</span>
+                <span class="mf">112.61</span><span class="p">,</span>
+                <span class="o">-</span><span class="mf">7.15</span>
+            <span class="p">],</span>
+            <span class="p">[</span>
+                <span class="mf">112.61</span><span class="p">,</span>
+                <span class="o">-</span><span class="mf">7.15</span>
+            <span class="p">],</span>
+            <span class="p">[</span>
+                <span class="mf">112.61</span><span class="p">,</span>
+                <span class="o">-</span><span class="mf">7.15</span>
+            <span class="p">]</span>
+        <span class="p">]</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Polygon&quot;</span>
+<span class="p">}</span>
+
+<span class="n">s5p_no2</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">load_collection</span><span class="p">(</span>
+    <span class="s2">&quot;SENTINEL_5P_L2&quot;</span><span class="p">,</span>
+    <span class="n">temporal_extent</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;2023-10-15&quot;</span><span class="p">,</span> <span class="s2">&quot;2025-10-19&quot;</span><span class="p">],</span>
+    <span class="n">spatial_extent</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;west&quot;</span><span class="p">:</span> <span class="mf">113.45</span><span class="p">,</span>
+        <span class="s2">&quot;south&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">7.25</span><span class="p">,</span>
+        <span class="s2">&quot;east&quot;</span><span class="p">:</span> <span class="mf">114.05</span><span class="p">,</span>
+        <span class="s2">&quot;north&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">6.75</span>
+    <span class="p">},</span>
+    <span class="n">bands</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;NO2&quot;</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">s5p_no2_daily</span> <span class="o">=</span> <span class="n">s5p_no2</span><span class="o">.</span><span class="n">aggregate_temporal_period</span><span class="p">(</span>
+    <span class="n">period</span><span class="o">=</span><span class="s2">&quot;day&quot;</span><span class="p">,</span>
+    <span class="n">reducer</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span>
+<span class="p">)</span>
+
+<span class="n">s5p_no2_aoi</span> <span class="o">=</span> <span class="n">s5p_no2_daily</span><span class="o">.</span><span class="n">aggregate_spatial</span><span class="p">(</span>
+    <span class="n">geometries</span><span class="o">=</span><span class="n">aoi</span><span class="p">,</span>
+    <span class="n">reducer</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span>
+<span class="p">)</span>
+
+<span class="n">job</span> <span class="o">=</span> <span class="n">s5p_no2</span><span class="o">.</span><span class="n">execute_batch</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;NO2 in Manyar&quot;</span><span class="p">,</span> <span class="n">outputfile</span><span class="o">=</span><span class="s2">&quot;NO2_in_Manyar.nc&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">Visit <a href="https://identity.dataspace.copernicus.eu/auth/realms/CDSE/device?user_code=OOKH-FNPB" title="Authenticate at https://identity.dataspace.copernicus.eu/auth/realms/CDSE/device?user_code=OOKH-FNPB" target="_blank" rel="noopener noreferrer">https://identity.dataspace.copernicus.eu/auth/realms/CDSE/device?user_code=OOKH-FNPB</a> <a href="#" onclick="navigator.clipboard.writeText('https://identity.dataspace.copernicus.eu/auth/realms/CDSE/device?user_code=OOKH-FNPB');return false;" title="Copy authentication URL to clipboard">&#128203;</a> to authenticate.</div><div class="output text_html"><code>[##################################---]</code> ⌛ Authorization pending</div><div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span><span class="w"> </span><span class="nn">openeo</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">connection</span> <span class="o">=</span> <span class="n">openeo</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;openeo.dataspace.copernicus.eu&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">authenticate_oidc</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">aoi</span> <span class="o">=</span> <span class="p">{</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span>     <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Polygon&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span>         <span class="s2">&quot;coordinates&quot;</span><span class="p">:</span> <span class="p">[</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>     <span class="mi">31</span>     <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Polygon&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">32</span> <span class="p">}</span>
+<span class="g g-Whitespace">     </span><span class="mi">34</span> <span class="n">s5p_no2</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">load_collection</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">35</span>     <span class="s2">&quot;SENTINEL_5P_L2&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">36</span>     <span class="n">temporal_extent</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;2023-10-15&quot;</span><span class="p">,</span> <span class="s2">&quot;2025-10-19&quot;</span><span class="p">],</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>     <span class="mi">43</span>     <span class="n">bands</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;NO2&quot;</span><span class="p">]</span>
+<span class="g g-Whitespace">     </span><span class="mi">44</span> <span class="p">)</span>
+
+<span class="nn">File /usr/local/python/3.12.1/lib/python3.12/site-packages/openeo/rest/connection.py:621,</span> in <span class="ni">Connection.authenticate_oidc</span><span class="nt">(self, provider_id, client_id, client_secret, store_refresh_token, use_pkce, display, max_poll_time)</span>
+<span class="g g-Whitespace">    </span><span class="mi">617</span> <span class="n">_log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Trying device code flow.&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">618</span> <span class="n">authenticator</span> <span class="o">=</span> <span class="n">OidcDeviceAuthenticator</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">619</span>     <span class="n">client_info</span><span class="o">=</span><span class="n">client_info</span><span class="p">,</span> <span class="n">use_pkce</span><span class="o">=</span><span class="n">use_pkce</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="n">display</span><span class="p">,</span> <span class="n">max_poll_time</span><span class="o">=</span><span class="n">max_poll_time</span>
+<span class="g g-Whitespace">    </span><span class="mi">620</span> <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">621</span> <span class="n">con</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_authenticate_oidc</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">622</span>     <span class="n">authenticator</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">623</span>     <span class="n">provider_id</span><span class="o">=</span><span class="n">provider_id</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">624</span>     <span class="n">store_refresh_token</span><span class="o">=</span><span class="n">store_refresh_token</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">625</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">626</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Authenticated using device code flow.&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">627</span> <span class="k">return</span> <span class="n">con</span>
+
+<span class="nn">File /usr/local/python/3.12.1/lib/python3.12/site-packages/openeo/rest/connection.py:351,</span> in <span class="ni">Connection._authenticate_oidc</span><span class="nt">(self, authenticator, provider_id, store_refresh_token, fallback_refresh_token_to_store, oidc_auth_renewer)</span>
+<span class="g g-Whitespace">    </span><span class="mi">339</span> <span class="k">def</span><span class="w"> </span><span class="nf">_authenticate_oidc</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">340</span>     <span class="bp">self</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">341</span>     <span class="n">authenticator</span><span class="p">:</span> <span class="n">OidcAuthenticator</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>    <span class="mi">346</span>     <span class="n">oidc_auth_renewer</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">OidcAuthenticator</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">347</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Connection</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">348</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">349</span><span class="sd">     Authenticate through OIDC and set up bearer token (based on OIDC access_token) for further requests.</span>
+<span class="g g-Whitespace">    </span><span class="mi">350</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">351</span>     <span class="n">tokens</span> <span class="o">=</span> <span class="n">authenticator</span><span class="o">.</span><span class="n">get_tokens</span><span class="p">(</span><span class="n">request_refresh_token</span><span class="o">=</span><span class="n">store_refresh_token</span><span class="p">)</span>
+<span class="nn">    352     _log.info(&quot;Obtained tokens: {t}&quot;.format(t=[k for k, v</span> in <span class="ni">tokens._asdict().items</span><span class="nt">() if v]))</span>
+<span class="g g-Whitespace">    </span><span class="mi">353</span>     <span class="k">if</span> <span class="n">store_refresh_token</span><span class="p">:</span>
+
+<span class="nn">File /usr/local/python/3.12.1/lib/python3.12/site-packages/openeo/rest/auth/oidc.py:914,</span> in <span class="ni">OidcDeviceAuthenticator.get_tokens</span><span class="nt">(self, request_refresh_token)</span>
+<span class="g g-Whitespace">    </span><span class="mi">912</span> <span class="k">while</span> <span class="n">elapsed</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_max_poll_time</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">913</span>     <span class="n">poll_ui</span><span class="o">.</span><span class="n">show_progress</span><span class="p">()</span>
+<span class="ne">--&gt; </span><span class="mi">914</span>     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">sleep</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">916</span>     <span class="k">if</span> <span class="n">elapsed</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="n">next_poll</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">917</span>         <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">918</span>             <span class="sa">f</span><span class="s2">&quot;Doing </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">grant_type</span><span class="si">!r}</span><span class="s2"> token request </span><span class="si">{</span><span class="n">token_endpoint</span><span class="si">!r}</span><span class="s2"> with post data fields </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">post_data</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="si">!r}</span><span class="s2"> (client_id </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">client_id</span><span class="si">!r}</span><span class="s2">)&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">919</span>         <span class="p">)</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
+</pre></div>
+</div>
+</div>
+</div>
+<section id="membaca-hasil-ekspor-netcdf-dan-mengekstrak-variabel-no2">
+<h2><strong>Membaca Hasil Ekspor NetCDF dan Mengekstrak Variabel NO₂</strong><a class="headerlink" href="#membaca-hasil-ekspor-netcdf-dan-mengekstrak-variabel-no2" title="Link to this heading">#</a></h2>
+<hr class="docutils" />
+<p>Setelah data berhasil diambil dari openEO dan disimpan dalam file bernama <code class="docutils literal notranslate"><span class="pre">NO2_in_Manyar.</span> <span class="pre">nc</span></code>, langkah selanjutnya adalah membuka file tersebut dan mengambil variabel-variabel yang terdapat di dalamnya.</p>
+<p>Format NetCDF (. nc) adalah format umum yang digunakan untuk menyimpan data terkait satelit dan iklim, karena kemampuan mendukung struktur data yang memiliki dimensi lebih dari satu — termasuk data spasial (lintang, bujur) dan temporal (waktu). Untuk membaca file ini, kita akan memanfaatkan pustaka <code class="docutils literal notranslate"><span class="pre">netCDF4</span></code>.</p>
+<p>Berikut adalah langkah-langkah yang diperlukan:</p>
+<ol class="arabic simple">
+<li><p>Membuka file <code class="docutils literal notranslate"><span class="pre">.</span> <span class="pre">nc</span></code> dengan <code class="docutils literal notranslate"><span class="pre">netCDF4.</span> <span class="pre">Dataset</span></code>
+File yang diekspor dibuka sehingga semua informasi metadata dan variabel yang ada dapat diakses.</p></li>
+<li><p>Melihat daftar variabel dalam dataset
+Langkah ini penting untuk menemukan variabel yang diperlukan, seperti konsentrasi NO₂ dan variabel waktu yang biasanya bernama <code class="docutils literal notranslate"><span class="pre">&quot;time&quot;</span></code> atau <code class="docutils literal notranslate"><span class="pre">&quot;t&quot;</span></code>.</p></li>
+<li><p>Mengambil data NO₂ dan waktu
+Konsentrasi NO₂ dibaca dalam bentuk array multidimensi, sedangkan data waktu umumnya disimpan sebagai nilai offset (misalnya “days since 1970-01-01”).</p></li>
+<li><p>Mengonversi waktu ke format tanggal
+Dengan menggunakan atribut <code class="docutils literal notranslate"><span class="pre">units</span></code> pada variabel waktu, nilai offset tersebut dapat diubah menjadi format <code class="docutils literal notranslate"><span class="pre">datetime</span></code> agar lebih mudah dianalisis.</p></li>
+<li><p>Menampilkan cuplikan data
+Untuk memastikan bahwa proses pembacaan berjalan dengan baik, beberapa nilai awal dari variabel NO₂ dan waktu akan ditampilkan sebagai contoh.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>netCDF4
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting netCDF4
+  Downloading netcdf4-1.7.3-cp311-abi3-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (1.9 kB)
+Collecting cftime (from netCDF4)
+  Downloading cftime-1.6.5-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (8.7 kB)
+Requirement already satisfied: certifi in /usr/local/lib/python3.12/dist-packages (from netCDF4) (2025.10.5)
+Requirement already satisfied: numpy in /usr/local/lib/python3.12/dist-packages (from netCDF4) (2.0.2)
+Downloading netcdf4-1.7.3-cp311-abi3-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (9.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">9.5/9.5 MB</span> <span class=" -Color -Color-Red">78.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hDownloading cftime-1.6.5-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (1.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">1.6/1.6 MB</span> <span class=" -Color -Color-Red">59.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hInstalling collected packages: cftime, netCDF4
+Successfully installed cftime-1.6.5 netCDF4-1.7.3
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">netCDF4</span>
+
+<span class="n">file_path</span> <span class="o">=</span> <span class="s2">&quot;/content/NO2_in_Manyar.nc&quot;</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">netCDF4</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; Variabel dalam file:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">variables</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+
+<span class="n">no2</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s2">&quot;NO2&quot;</span><span class="p">][:]</span>
+
+<span class="n">time</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s2">&quot;t&quot;</span><span class="p">][:]</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">time_units</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s2">&quot;t&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">units</span>
+    <span class="n">dates</span> <span class="o">=</span> <span class="n">netCDF4</span><span class="o">.</span><span class="n">num2date</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="n">time_units</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+    <span class="n">dates</span> <span class="o">=</span> <span class="n">time</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">📅 Contoh data pertama:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">no2</span><span class="p">))):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">dates</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s2"> | NO2: </span><span class="si">{</span><span class="n">no2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Variabel dalam file:
+dict_keys([&#39;t&#39;, &#39;x&#39;, &#39;y&#39;, &#39;crs&#39;, &#39;NO2&#39;])
+
+📅 Contoh data pertama:
+2023-10-15 00:00:00 | NO2: [[8.966615496319719e-06 -2.392675241935649e-06 -3.0093137866060715e-06
+  1.001477812678786e-05 1.7949954781215638e-05 6.251369086385239e-06
+  1.1501825611048844e-05 3.560855475370772e-06 3.647016228569555e-06
+  1.4542471035383642e-05 1.032557338476181e-05]
+ [3.7396214338514255e-06 4.4958237594983075e-06 -3.0093137866060715e-06
+  1.001477812678786e-05 1.1489659300423227e-05 -5.246918135526357e-06
+  8.04716364655178e-06 4.42362619423875e-07 1.1687496225931682e-05
+  1.4542471035383642e-05 1.032557338476181e-05]
+ [8.006143616512418e-06 1.295386755373329e-05 -6.859128461655928e-06
+  1.3635681170853786e-05 1.1489659300423227e-05 -5.246918135526357e-06
+  6.050181582395453e-06 6.969158675929066e-06 1.0722932529461104e-05
+  9.662238880991936e-06 1.5079879631230142e-05]
+ [8.006143616512418e-06 1.295386755373329e-05 1.782755134627223e-05
+  5.527882422029506e-06 7.848360837670043e-06 5.95964775129687e-06
+  6.050181582395453e-06 6.969158675929066e-06 1.0722932529461104e-05
+  1.0516297152207699e-05 9.97262577584479e-06]
+ [9.499180123384576e-06 1.7436515918234363e-05 1.782755134627223e-05
+  5.527882422029506e-06 3.0267136025941e-05 1.3715727618546225e-05
+  6.884887170599541e-06 1.5302643987524789e-06 4.600162810675101e-06
+  1.0516297152207699e-05 9.97262577584479e-06]
+ [-- -- 7.985049705894198e-06 -- 4.66002802568255e-06 3.0267136025941e-05
+  3.3361213809257606e-06 1.0326704796170816e-05 5.695330855814973e-06
+  8.553370207664557e-06 4.427831754583167e-06]
+ [-- 2.44159969042812e-06 6.61874764773529e-06 -5.050035269960063e-06
+  1.576922477397602e-05 1.3612440852739383e-05 3.3361213809257606e-06
+  1.0326704796170816e-05 9.214637429977302e-06 9.972912266675849e-06
+  1.2221424185554497e-05]
+ [-5.5056525525287725e-06 2.44159969042812e-06 6.61874764773529e-06
+  8.706610969966277e-06 1.5604135114699602e-05 2.2422443635150557e-06
+  3.6681860819953727e-06 8.782101758697536e-06 9.214637429977302e-06
+  9.972912266675849e-06 3.117792402917985e-06]
+ [1.1421870112826582e-05 8.133164556056727e-06 -1.0376358659414109e-05
+  8.706610969966277e-06 1.5604135114699602e-05 2.2422443635150557e-06
+  1.0579356057860423e-05 5.2705122470797505e-06 1.5711264495621435e-05
+  2.851134468073724e-06 3.117792402917985e-06]
+ [1.1421870112826582e-05 8.745838385948446e-06 1.0233675311610568e-05
+  1.4479594028671272e-05 1.1052528861910105e-05 1.0563119758444373e-05
+  1.0579356057860423e-05 5.2705122470797505e-06 4.107228050997946e-06
+  1.197852498080465e-06 7.380071565421531e-06]
+ [8.633916877442971e-06 8.745838385948446e-06 1.0233675311610568e-05
+  7.3732403507165145e-06 -- -- 1.0858028872462455e-05
+  1.0134635886061005e-05 4.107228050997946e-06 1.197852498080465e-06
+  1.9388096461625537e-06]
+ [1.0797607501444872e-05 8.286790944111999e-06 1.9319359125802293e-05
+  7.3732403507165145e-06 -- 5.902824341319501e-06 3.594986083044205e-06
+  1.284404697798891e-05 1.1275260476395488e-05 -7.282850219780812e-06
+  1.9388096461625537e-06]
+ [6.823460807936499e-06 5.114476152812131e-06 -3.1706497338745976e-06
+  1.3439952454064041e-05 1.1541297681105789e-05 5.521732418856118e-06
+  5.902824341319501e-06 -1.3550838673381804e-07 1.2140395483584143e-05
+  4.8566184887022246e-06 -2.9995392196724424e-06]
+ [6.823460807936499e-06 5.114476152812131e-06 -3.1706497338745976e-06
+  2.152964270862867e-06 1.3623989616462495e-06 1.1859848427775432e-06
+  1.1691110557876527e-05 -1.3550838673381804e-07 1.2140395483584143e-05
+  4.8566184887022246e-06 1.3233752724772785e-05]
+ [-7.25349082131288e-07 1.038375103235012e-05 1.1258379117862205e-06
+  2.152964270862867e-06 1.3623989616462495e-06 6.579605724255089e-06
+  7.160728273447603e-06 1.1559701306396164e-05 3.5332475363247795e-06
+  1.3986999874759931e-05 1.3233752724772785e-05]]
+2023-10-16 00:00:00 | NO2: [[4.494813765631989e-06 2.5730141715030186e-05 1.5013257325335871e-05
+  1.7795557141653262e-05 4.656988494389225e-06 2.323203079868108e-05
+  9.179672815662343e-06 1.4204190847522113e-05 7.333637313422514e-06
+  -6.942329491721466e-06 1.3605049389298074e-05]
+ [4.494813765631989e-06 6.82457948641968e-06 5.08107495988952e-06
+  3.1090596166905016e-05 4.656988494389225e-06 2.8869271773146465e-05
+  7.1661252150079235e-06 3.7536194668064127e-06 7.333637313422514e-06
+  -6.942329491721466e-06 2.2623520635534078e-05]
+ [1.396925472363364e-05 6.82457948641968e-06 1.7469368685851805e-05
+  1.2941575732838828e-05 1.4549443221767433e-05 2.8869271773146465e-05
+  1.9159031580784358e-05 1.1465796887932811e-05 8.094067197816912e-06
+  9.582931852492038e-07 2.2623520635534078e-05]
+ [1.2194721421110444e-05 1.5722913303761743e-05 1.7469368685851805e-05
+  1.2941575732838828e-05 7.464364443876548e-06 8.87082023837138e-06
+  2.042013147729449e-05 1.1465796887932811e-05 1.5339111996581778e-05
+  1.191933097288711e-05 5.895781214348972e-06]
+ [1.2194721421110444e-05 2.271010998811107e-05 1.9060124031966552e-05
+  8.124177838908508e-06 7.464364443876548e-06 1.703789530438371e-05
+  3.4712111300905235e-06 1.4478180673904717e-05 2.695701186894439e-05
+  8.781920769251883e-06 1.449984574719565e-05]
+ [2.7009955374523997e-05 2.271010998811107e-05 1.8189786715083756e-05
+  1.2553819942695554e-05 2.2993348466116004e-05 6.455718448705738e-06
+  8.408393114223145e-06 1.514868563390337e-05 1.7154527085949667e-05
+  8.781920769251883e-06 3.850394023174886e-06]
+ [1.833314854593482e-05 1.3006364497414324e-05 1.4919675777491648e-05
+  1.4315865882963408e-05 1.6833302652230486e-05 8.105325832730159e-07
+  8.408393114223145e-06 3.3535845432197675e-05 9.864322237262968e-06
+  2.3550819605588913e-05 1.5254697245836724e-05]
+ [1.833314854593482e-05 1.6974208847386762e-05 8.324956866090361e-07
+  1.4315865882963408e-05 1.8353286577621475e-05 -4.815141892322572e-06
+  2.1996589566697367e-05 1.59431183419656e-05 9.864322237262968e-06
+  1.3827196198690217e-05 7.168714546423871e-06]
+ [1.571722714288626e-05 1.6974208847386762e-05 1.3314398529473692e-05
+  3.944020136259496e-06 1.4879218724672683e-05 -4.815141892322572e-06
+  2.34765320783481e-05 1.0322440175514203e-05 1.24654552564607e-05
+  1.3827196198690217e-05 7.168714546423871e-06]
+ [2.5117848053923808e-05 1.9070144844590686e-05 1.3314398529473692e-05
+  1.0471845598658547e-05 2.502121787983924e-05 1.6481140846735798e-05
+  2.34765320783481e-05 1.0322440175514203e-05 1.0765633305709343e-05
+  6.277854481595568e-06 2.7337096980772913e-05]
+ [2.5117848053923808e-05 1.736285958031658e-05 1.9815652194665745e-05
+  1.0471845598658547e-05 2.502121787983924e-05 8.159213393810205e-06
+  1.3708552614843938e-05 2.136152033926919e-05 1.0765633305709343e-05
+  2.022712942562066e-05 1.2248748134879861e-05]
+ [2.31863850785885e-05 1.736285958031658e-05 1.4442155588767491e-05
+  2.0088515157112852e-05 1.6154102922882885e-05 8.159213393810205e-06
+  8.301182788272854e-06 9.686873454484157e-06 6.621469765377697e-06
+  8.87677651917329e-06 1.2248748134879861e-05]
+ [1.825782601372339e-05 2.0668097931775264e-05 1.4442155588767491e-05
+  1.3337101336219348e-05 1.2341276487859432e-05 1.6730558854760602e-05
+  1.3360855518840253e-05 9.686873454484157e-06 2.5622521206969395e-05
+  4.692131824413082e-06 1.3060164747003e-05]
+ [1.062839146470651e-05 2.2982940208748914e-06 2.8459680834203027e-05
+  1.2813281500712037e-05 1.2341276487859432e-05 2.1168285456951708e-05
+  1.4906730939401314e-05 1.2036758789690793e-06 1.5406383681693114e-05
+  2.7341529857949354e-06 1.663143302721437e-05]
+ [1.062839146470651e-05 2.2982940208748914e-06 9.376688581141934e-07
+  1.1780853128584567e-05 2.0172954009467503e-06 2.3560742192785256e-05
+  8.109738587336324e-07 2.2554475435754284e-05 1.7341804777970538e-05
+  2.7341529857949354e-06 6.334061708912486e-06]]
+2023-10-17 00:00:00 | NO2: [[6.622305591008626e-06 2.6303598133381456e-05 1.423181856807787e-05
+  1.5147606063692365e-05 7.427754098898731e-06 1.4706311958434526e-05
+  1.027084726956673e-05 1.001549117063405e-05 7.2485026976210065e-06
+  1.1943269782932475e-05 2.2556036128662527e-05]
+ [2.3029504518490285e-05 1.2859291928180028e-05 1.423181856807787e-05
+  8.610398253949825e-06 6.670993570878636e-06 1.4706311958434526e-05
+  1.2669757779804058e-05 1.7346010281471536e-05 1.4234384252631571e-05
+  1.868311119324062e-05 2.6133373467018828e-05]
+ [2.3029504518490285e-05 1.8000127965933643e-05 1.4742803614353761e-05
+  8.610398253949825e-06 2.47121206484735e-05 1.7598145859665237e-05
+  1.2669757779804058e-05 7.020606062724255e-06 6.724216291331686e-06
+  1.5329947927966714e-05 2.7161313482793048e-05]
+ [6.724970262439456e-06 1.8000127965933643e-05 9.18103069125209e-06
+  1.7477359506301582e-05 2.47121206484735e-05 6.43086468699039e-06
+  1.8557217117631808e-05 7.020606062724255e-06 8.856233762344345e-06
+  1.662966315052472e-05 2.7161313482793048e-05]
+ [1.7329342881566845e-05 1.8753094991552643e-05 9.18103069125209e-06
+  5.008274911233457e-06 1.0056944120151456e-05 6.43086468699039e-06
+  2.0758676328114234e-05 1.3728035810345318e-05 8.856233762344345e-06
+  1.0438088793307543e-05 2.037948252109345e-05]
+ [1.7329342881566845e-05 2.0798233890673146e-05 3.3925269235624e-05
+  5.008274911233457e-06 2.788436904666014e-05 8.467052794003394e-06
+  2.0758676328114234e-05 2.219400994363241e-05 2.627741196192801e-05
+  1.0438088793307543e-05 2.5575767722330056e-05]
+ [9.59574208536651e-06 2.0798233890673146e-05 2.9678132705157623e-05
+  2.034960562014021e-05 2.788436904666014e-05 3.190986899426207e-05
+  3.0324285035021603e-05 1.088613316824194e-05 1.8320351955480874e-05
+  2.0211686205584556e-05 2.5575767722330056e-05]
+ [3.0456087188213132e-05 2.247985867143143e-05 2.9678132705157623e-05
+  2.2645437638857402e-05 1.6290247003780678e-05 3.190986899426207e-05
+  1.620409602764994e-05 2.0299710740800947e-05 1.3298657904670108e-05
+  2.4586641302448697e-05 2.3070539100444876e-05]
+ [3.0456087188213132e-05 3.6408488085726276e-05 1.717650957289152e-05
+  2.2645437638857402e-05 1.1756594176404178e-05 1.2584740034071729e-05
+  1.620409602764994e-05 1.0810247658810113e-05 2.656392643984873e-05
+  1.702960616967175e-05 7.191123131633503e-06]
+ [3.509196903905831e-05 3.6408488085726276e-05 1.7474594642408192e-05
+  4.761056698043831e-05 1.1756594176404178e-05 2.857929030142259e-05
+  2.5297915271949023e-05 1.0810247658810113e-05 1.3831341675540898e-05
+  1.3711040764974314e-06 1.3682123608305119e-05]
+ [3.4625543776201084e-05 3.1386149203171954e-05 1.7474594642408192e-05
+  2.6293711925973184e-05 3.2572665077168494e-05 2.857929030142259e-05
+  2.4076045519905165e-05 1.8850798369385302e-05 1.3831341675540898e-05
+  2.7150625101057813e-05 1.721987428027205e-05]
+ [2.2067282770876773e-05 2.0923895135638304e-05 3.3590324164833874e-05
+  2.6293711925973184e-05 2.079890873574186e-05 1.9244238501414657e-05
+  2.4556480639148504e-05 1.6743031665100716e-05 1.1168439414177556e-05
+  2.7150625101057813e-05 7.488374649256002e-06]
+ [7.783407454553526e-06 2.7052876248490065e-05 1.1670885214698501e-05
+  8.20539025880862e-06 2.079890873574186e-05 2.0528606910374947e-05
+  1.7043865227606148e-05 2.478016358509194e-05 2.0932646293658763e-05
+  1.0892897989833727e-05 7.488374649256002e-06]
+ [2.714264701353386e-05 1.52924403664656e-05 1.7435946574551053e-05
+  2.6875724870478734e-05 2.484008109604474e-05 2.0528606910374947e-05
+  1.8078197172144428e-05 1.5184981748461723e-05 1.759662336553447e-05
+  8.685821740073152e-06 1.6235419025179e-05]
+ [2.714264701353386e-05 1.7159236449515447e-05 8.394985343329608e-06
+  1.8388609532848932e-05 9.30695932765957e-06 1.9008912204299122e-05
+  1.8078197172144428e-05 1.4562118849426042e-05 1.983441507036332e-05
+  1.1062869816669263e-05 2.0876161215710454e-05]]
+2023-10-18 00:00:00 | NO2: [[1.6954425518633798e-05 1.6954425518633798e-05 2.006144859478809e-05
+  2.006144859478809e-05 1.274011992791202e-05 1.3133848369761836e-05
+  1.3133848369761836e-05 1.3612635484605562e-05 1.3612635484605562e-05
+  1.3458910871122498e-05 9.179982043860946e-06]
+ [1.6787400454632007e-05 1.6787400454632007e-05 1.5507846910622902e-05
+  1.5507846910622902e-05 1.274011992791202e-05 2.254888750030659e-05
+  9.856387805484701e-06 1.3612635484605562e-05 1.5603911379002966e-05
+  9.179982043860946e-06 9.179982043860946e-06]
+ [1.6787400454632007e-05 2.1784486307296902e-05 1.5507846910622902e-05
+  1.6389432857977226e-05 2.254888750030659e-05 2.254888750030659e-05
+  1.1237440048716962e-05 1.5603911379002966e-05 1.5603911379002966e-05
+  1.5065789739310276e-05 1.5065789739310276e-05]
+ [2.1784486307296902e-05 2.1784486307296902e-05 1.6389432857977226e-05
+  1.6389432857977226e-05 1.2910770692542428e-06 1.2910770692542428e-06
+  1.1237440048716962e-05 1.5158560017880518e-05 5.0422454478393774e-06
+  1.5065789739310276e-05 5.781221716461005e-06]
+ [1.8292297681909986e-05 9.528462214802857e-06 1.6389432857977226e-05
+  6.689719498353952e-07 1.2910770692542428e-06 1.1055520189984236e-05
+  1.5158560017880518e-05 1.5158560017880518e-05 4.345818524598144e-06
+  5.781221716461005e-06 5.781221716461005e-06]
+ [1.8292297681909986e-05 1.0636023034749087e-05 1.0636023034749087e-05
+  2.4500099243596196e-05 1.1055520189984236e-05 1.1055520189984236e-05
+  -7.274674658219737e-07 -7.274674658219737e-07 4.345818524598144e-06
+  1.1136718967463821e-05 1.1585647371248342e-05]
+ [2.544906055845786e-05 1.0636023034749087e-05 1.4767737411602866e-05
+  2.4500099243596196e-05 2.549618875491433e-05 2.549618875491433e-05
+  -7.274674658219737e-07 1.2129868991905823e-05 1.1136718967463821e-05
+  1.1136718967463821e-05 2.1145649952813983e-05]
+ [1.974597580556292e-05 1.4767737411602866e-05 1.4767737411602866e-05
+  1.5907015040284023e-05 1.5907015040284023e-05 1.556764436827507e-05
+  1.2129868991905823e-05 1.2129868991905823e-05 2.9382636057562195e-06
+  2.9382636057562195e-06 2.1145649952813983e-05]
+ [1.974597580556292e-05 1.8837912648450583e-05 1.8837912648450583e-05
+  1.3342091733647976e-05 1.3342091733647976e-05 1.556764436827507e-05
+  1.9679580873344094e-05 1.8904993339674547e-05 2.9382636057562195e-06
+  1.0602239854051732e-05 1.270121538254898e-05]
+ [6.9438347054529e-06 1.8837912648450583e-05 1.4728758287674282e-05
+  1.3342091733647976e-05 2.499458241800312e-05 1.9679580873344094e-05
+  1.9679580873344094e-05 1.00953893706901e-05 1.0602239854051732e-05
+  1.0602239854051732e-05 1.1789998097810894e-05]
+ [9.209607014781795e-06 1.4728758287674282e-05 1.4728758287674282e-05
+  2.499458241800312e-05 2.499458241800312e-05 1.542654172226321e-05
+  1.542654172226321e-05 1.00953893706901e-05 1.1408155842218548e-05
+  1.4105447007750627e-05 1.1789998097810894e-05]
+ [9.209607014781795e-06 2.1414622096926905e-05 1.9548562704585493e-05
+  2.499458241800312e-05 2.26441025006352e-05 1.542654172226321e-05
+  1.3713263797399122e-05 1.1408155842218548e-05 1.1408155842218548e-05
+  3.79254902327375e-06 1.2884341231256258e-05]
+ [2.1414622096926905e-05 2.1414622096926905e-05 1.4380329957930371e-05
+  2.26441025006352e-05 3.0036549105716404e-06 1.3713263797399122e-05
+  1.3713263797399122e-05 1.023223467200296e-05 1.023223467200296e-05
+  3.79254902327375e-06 -5.533038027749626e-09]
+ [1.5764451745781116e-05 1.5764451745781116e-05 1.4380329957930371e-05
+  1.5470215657842346e-05 3.0036549105716404e-06 6.822603609180078e-06
+  6.822603609180078e-06 1.023223467200296e-05 9.560430953570176e-06
+  9.68665426626103e-06 9.68665426626103e-06]
+ [1.5764451745781116e-05 1.8300719602848403e-05 1.5470215657842346e-05
+  1.5470215657842346e-05 1.7216269043274224e-05 1.7216269043274224e-05
+  1.526436608401127e-05 9.560430953570176e-06 9.560430953570176e-06
+  1.71343326655915e-05 1.71343326655915e-05]]
+2023-10-19 00:00:00 | NO2: [[1.2179226359876338e-05 -5.254481152405788e-07 -1.6811154068818723e-07
+  1.2814650290238205e-05 1.2814650290238205e-05 9.269671863876283e-06
+  1.300122676184401e-05 1.300122676184401e-05 4.076207460457226e-06
+  1.97996760107344e-05 1.298437564400956e-05]
+ [1.1605667395997443e-06 4.431412435224047e-06 1.7085278159356676e-05
+  1.7085278159356676e-05 1.2814650290238205e-05 9.269671863876283e-06
+  7.063921998451406e-07 7.063921998451406e-07 6.015941835357808e-06
+  1.717702252790332e-05 1.717702252790332e-05]
+ [4.96168149766163e-06 1.3664824109582696e-05 1.2354693353699986e-05
+  1.2354693353699986e-05 3.6777680634259013e-06 2.5297791580669582e-05
+  7.063921998451406e-07 7.063921998451406e-07 6.015941835357808e-06
+  1.684697053860873e-05 1.684697053860873e-05]
+ [4.96168149766163e-06 1.3664824109582696e-05 1.3664824109582696e-05
+  2.2416990759666078e-05 1.4234937225410249e-05 2.693938404263463e-05
+  2.693938404263463e-05 1.034707293001702e-05 1.32713112179772e-05
+  1.684697053860873e-05 1.684697053860873e-05]
+ [2.105106796079781e-05 2.3642603991902433e-05 2.3642603991902433e-05
+  2.2416990759666078e-05 1.4234937225410249e-05 3.916253263014369e-06
+  3.916253263014369e-06 1.8774304407997988e-05 6.92853200234822e-06
+  6.92853200234822e-06 8.89938382897526e-06]
+ [1.4164992535370402e-05 1.4164992535370402e-05 1.0947449482046068e-05
+  2.918094196502352e-06 -1.3714633269046317e-06 -1.3714633269046317e-06
+  3.916253263014369e-06 1.8774304407997988e-05 -2.501199332982651e-06
+  -2.501199332982651e-06 6.464384114224231e-06]
+ [1.4164992535370402e-05 1.4164992535370402e-05 1.8838247342500836e-05
+  8.935746336646844e-06 1.9588922441471368e-05 1.9588922441471368e-05
+  1.485581469751196e-05 1.099901146517368e-05 1.099901146517368e-05
+  -2.501199332982651e-06 1.1723087482096162e-05]
+ [1.8866234313463792e-05 4.681751761381747e-06 1.8838247342500836e-05
+  8.935746336646844e-06 -4.924285121887806e-07 5.481531843543053e-06
+  2.050987859547604e-05 8.023217560548801e-06 8.023217560548801e-06
+  9.570662768965121e-06 1.1723087482096162e-05]
+ [2.7943042368860915e-05 2.3842203518142924e-05 1.5623763829353265e-05
+  -4.924285121887806e-07 -4.924285121887806e-07 5.481531843543053e-06
+  2.050987859547604e-05 2.023958404606674e-05 2.023958404606674e-05
+  4.951012670062482e-06 1.4918607121217065e-05]
+ [2.7943042368860915e-05 1.9206572687835433e-05 1.2208719454065431e-05
+  1.2208719454065431e-05 2.350446993659716e-05 1.739039180392865e-05
+  1.7747825040714815e-05 1.7747825040714815e-05 2.023958404606674e-05
+  1.339199206995545e-05 1.5274064935510978e-05]
+ [9.354080248158425e-06 1.9206572687835433e-05 1.2208719454065431e-05
+  1.4804751117480919e-05 2.477084672136698e-05 2.377044438617304e-05
+  2.0082821720279753e-05 2.0082821720279753e-05 4.93087145514437e-06
+  1.339199206995545e-05 1.339199206995545e-05]
+ [1.4658088730357122e-05 1.7235766790690832e-05 1.7235766790690832e-05
+  1.4804751117480919e-05 2.477084672136698e-05 2.377044438617304e-05
+  6.745102837157901e-06 2.0980956833227538e-05 2.4915403628256172e-05
+  5.561356374528259e-06 5.561356374528259e-06]
+ [2.2049340259400196e-05 1.6646112271700986e-05 1.6646112271700986e-05
+  6.320479315036209e-06 1.2542581316665746e-05 6.745102837157901e-06
+  6.745102837157901e-06 2.0980956833227538e-05 2.4915403628256172e-05
+  1.2363393580017146e-05 6.294393642747309e-06]
+ [2.2049340259400196e-05 2.2049340259400196e-05 1.6646112271700986e-05
+  1.7942611520993523e-05 2.7196949304197915e-05 2.7196949304197915e-05
+  8.625248483440373e-06 2.754586239461787e-05 1.2363393580017146e-05
+  1.2363393580017146e-05 6.294393642747309e-06]
+ [1.8240178178530186e-05 1.8240178178530186e-05 1.9531975340214558e-05
+  1.7942611520993523e-05 2.7196949304197915e-05 9.352819688501768e-06
+  1.2800631338905077e-05 1.4818941963312682e-05 1.819215322029777e-05
+  1.819215322029777e-05 2.7008301913156174e-05]]
+2023-10-20 00:00:00 | NO2: [[1.1086900485679507e-05 1.1148646990477573e-05 4.860883564106189e-06
+  1.5139634342631325e-05 1.5139634342631325e-05 1.512963353889063e-05
+  7.633740096935071e-06 8.71238353283843e-06 3.438923840803909e-06
+  3.438923840803909e-06 1.6979945939965546e-05]
+ [1.1086900485679507e-05 9.01263683772413e-06 2.449084240652155e-05
+  2.449084240652155e-05 1.2847249308833852e-05 1.4858002941764425e-05
+  7.633740096935071e-06 8.71238353283843e-06 8.71238353283843e-06
+  1.6341291484422982e-05 1.4149972230370622e-05]
+ [1.2632031939574517e-05 9.01263683772413e-06 2.449084240652155e-05
+  1.3990549632580951e-05 1.6156755009433255e-05 1.4631729754910339e-05
+  1.1025996172975283e-05 2.265813236590475e-05 2.265813236590475e-05
+  1.6341291484422982e-05 1.4149972230370622e-05]
+ [9.432731530978344e-06 2.1198857211857103e-05 2.1198857211857103e-05
+  1.3990549632580951e-05 1.6156755009433255e-05 1.4631729754910339e-05
+  1.436158436263213e-05 1.436158436263213e-05 1.5905698091955855e-05
+  5.159922693565022e-06 1.8095008272212e-05]
+ [1.3507297808246221e-05 8.656748832436278e-06 8.656748832436278e-06
+  4.407455435284646e-06 9.674610737420153e-06 1.8986102077178657e-05
+  1.8986102077178657e-05 1.436158436263213e-05 1.3007292182010133e-05
+  1.4222280697140377e-05 1.0152110007766169e-05]
+ [1.3507297808246221e-05 1.3507297808246221e-05 8.656748832436278e-06
+  1.58480615937151e-05 1.9135657566948794e-05 1.8350532627664506e-05
+  1.8350532627664506e-05 9.742409929458518e-06 1.3007292182010133e-05
+  1.4222280697140377e-05 1.4222280697140377e-05]
+ [1.6193871488212608e-05 1.2265842997294385e-05 2.3277458240045235e-05
+  1.58480615937151e-05 1.9135657566948794e-05 3.7360778151196428e-06
+  7.61882165534189e-06 1.4808022569923196e-05 1.3362359823076986e-05
+  1.4136670870357193e-05 1.4136670870357193e-05]
+ [7.336749604291981e-06 1.0780642696772702e-05 1.242576036020182e-05
+  1.321827858191682e-05 3.7360778151196428e-06 3.7360778151196428e-06
+  7.61882165534189e-06 1.4808022569923196e-05 1.4173385352478363e-05
+  1.4173385352478363e-05 1.8493365132599138e-05]
+ [7.336749604291981e-06 1.0780642696772702e-05 1.4062830814509653e-05
+  1.1906015970453154e-05 1.1906015970453154e-05 1.5482086382689886e-05
+  1.7632964954827912e-05 1.668482400418725e-05 1.4173385352478363e-05
+  1.4173385352478363e-05 1.4014027328812517e-05]
+ [1.71132996911183e-05 1.721893386275042e-05 1.4062830814509653e-05
+  1.4062830814509653e-05 1.1906015970453154e-05 1.0118318641616497e-05
+  6.341391326714074e-06 8.482252269459423e-06 8.482252269459423e-06
+  2.4224638764280826e-05 1.4014027328812517e-05]
+ [1.3637453776027542e-05 1.892200998554472e-05 1.5942356185405515e-05
+  1.5942356185405515e-05 2.083193976432085e-05 1.0118318641616497e-05
+  6.341391326714074e-06 1.2451115253497846e-05 1.2451115253497846e-05
+  8.419160621997435e-06 1.0754932191048283e-05]
+ [1.3637453776027542e-05 1.892200998554472e-05 1.5127773622225504e-05
+  2.155785659851972e-05 1.4161140825308394e-05 5.170551048649941e-06
+  1.1035637726308778e-05 1.1035637726308778e-05 1.2451115253497846e-05
+  8.419160621997435e-06 -1.1575756388992886e-06]
+ [1.4258023838920053e-05 1.4258023838920053e-05 1.5127773622225504e-05
+  2.155785659851972e-05 7.35585808797623e-06 1.7518275853944942e-05
+  1.6304486052831635e-05 1.6304486052831635e-05 1.3758736713498365e-05
+  1.532955684524495e-05 -1.1575756388992886e-06]
+ [1.783873995009344e-05 1.783873995009344e-05 9.595497374448314e-08
+  1.4116192687652074e-05 7.35585808797623e-06 1.7518275853944942e-05
+  1.7518275853944942e-05 1.7249532902496867e-05 -9.347043032903457e-07
+  7.017010375420796e-06 7.017010375420796e-06]
+ [1.2142199011577759e-05 2.0650355509133078e-05 2.2782411178923212e-05
+  7.019325494184159e-06 9.011175279738382e-06 9.011175279738382e-06
+  7.649041435797699e-06 1.7249532902496867e-05 -9.347043032903457e-07
+  1.0680189916456584e-05 1.0680189916456584e-05]]
+2023-10-21 00:00:00 | NO2: [[2.7540740120457485e-05 2.2695439838571474e-05 2.4601526092737913e-05
+  1.2130141840316355e-05 1.6058815162978135e-05 1.2206203791720327e-05
+  2.2366855773725547e-05 2.673756898730062e-05 5.038617473474005e-06
+  2.5399502192158252e-05 4.408959739521379e-06]
+ [1.369455367239425e-05 2.2695439838571474e-05 3.348040991113521e-05
+  1.9974484530393966e-05 1.7494290659669787e-05 1.2206203791720327e-05
+  1.1348455700499471e-05 2.487726669642143e-05 8.872275429894216e-06
+  1.0076335456687957e-05 4.408959739521379e-06]
+ [2.1757923605036922e-05 2.3549919205834158e-05 3.348040991113521e-05
+  2.2050064217182808e-05 1.3369975931709632e-05 2.1003887013648637e-05
+  1.880372474261094e-05 2.487726669642143e-05 8.872275429894216e-06
+  1.9302482542116195e-05 1.269268886971986e-05]
+ [1.2713258001895156e-05 1.8748836737358943e-05 2.0253588445484638e-05
+  2.7870839403476566e-05 1.3369975931709632e-05 3.7258625525282696e-05
+  7.752448254905175e-06 2.111007779603824e-05 5.646274075843394e-06
+  1.9302482542116195e-05 1.2559208698803559e-05]
+ [1.2713258001895156e-05 1.8748836737358943e-05 3.052359170396812e-05
+  2.3329479517997243e-05 2.3061080355546437e-05 3.7258625525282696e-05
+  7.752448254905175e-06 2.153472087229602e-05 2.7219619369134307e-05
+  1.178560978587484e-05 1.2850608982262202e-05]
+ [2.6894633265328594e-05 3.092173574259505e-05 2.5768316845642403e-05
+  2.0094774299650453e-05 1.5537458239123225e-05 1.3656485862156842e-05
+  2.094789670081809e-05 2.153472087229602e-05 1.9714712834684178e-05
+  1.560865348437801e-05 1.5856152458582073e-05]
+ [1.677410000411328e-05 1.7146887330454774e-05 2.859159758372698e-05
+  2.0094774299650453e-05 1.5537458239123225e-05 4.5677234083996154e-06
+  7.5556986303126905e-06 1.5284744222299196e-05 1.9714712834684178e-05
+  1.560865348437801e-05 1.0905132512561977e-05]
+ [1.677410000411328e-05 2.0929513993905857e-05 2.2972777514951304e-05
+  1.3677144124812912e-05 1.73925709532341e-05 4.5677234083996154e-06
+  7.5556986303126905e-06 2.823260729201138e-05 1.4479222045338247e-05
+  2.03838681045454e-05 1.0905132512561977e-05]
+ [1.132489887822885e-05 8.25580173113849e-06 2.2972777514951304e-05
+  2.965967905765865e-05 2.0246810890967026e-05 2.324248089280445e-05
+  1.9540217181202024e-05 2.823260729201138e-05 1.183356926048873e-05
+  2.5503457436570898e-05 1.4556930182152428e-05]
+ [1.8753346012090333e-05 2.0306790247559547e-05 3.73888251488097e-05
+  2.965967905765865e-05 2.0246810890967026e-05 2.1104360712342896e-05
+  1.7063768609659746e-05 5.530248017748818e-06 7.195310445240466e-06
+  2.5503457436570898e-05 1.51157673826674e-05]
+ [1.778968180587981e-05 1.401393092237413e-05 1.8449129129294306e-05
+  1.4176767763274256e-05 1.2858863556175493e-05 2.1104360712342896e-05
+  4.027456270705443e-06 1.0129740985576063e-05 1.624374999664724e-05
+  1.8513421309762634e-05 1.51157673826674e-05]
+ [1.2895273357571568e-05 1.401393092237413e-05 1.8449129129294306e-05
+  1.1826040463347454e-05 1.0566924174781889e-05 1.4678895240649581e-05
+  4.027456270705443e-06 1.0129740985576063e-05 2.3153454094426706e-05
+  1.857819006545469e-05 1.1016441021638457e-05]
+ [2.879955900425557e-05 1.1315599294903222e-05 2.146289625670761e-05
+  3.373400613781996e-05 1.0566924174781889e-05 1.626390076125972e-05
+  5.3957828640704975e-06 -6.368677986756666e-06 2.3153454094426706e-05
+  9.276501259591896e-06 1.3949211279395968e-05]
+ [2.879955900425557e-05 1.741369123919867e-05 2.3239865186042152e-05
+  6.071877578506246e-06 7.207263024611166e-06 1.626390076125972e-05
+  2.0927800505887717e-05 1.03363788639399e-06 1.8347849618294276e-05
+  2.1993109839968383e-05 1.3949211279395968e-05]
+ [1.4312247913039755e-05 1.741369123919867e-05 1.9569919459172525e-05
+  1.102827718568733e-05 2.8621932870009914e-05 1.680488458077889e-05
+  1.0532270607654937e-05 1.03363788639399e-06 2.210589400419849e-06
+  3.398091394046787e-06 1.0328203643439338e-05]]
+2023-10-22 00:00:00 | NO2: [[1.582208278705366e-05 1.3472450518747792e-05 1.479544062021887e-05
+  9.495297490502708e-06 1.4697583537781611e-05 7.85437623562757e-06
+  8.25173356133746e-06 2.121108082064893e-05 1.0041960194939747e-05
+  5.009859705751296e-06 1.3151867278793361e-05]
+ [1.932118357217405e-05 2.181694799219258e-05 1.4010018276167102e-05
+  1.4376833860296756e-05 1.4697583537781611e-05 1.0127592759090476e-05
+  1.4896475477144122e-05 1.3379315532802138e-05 8.472020454064477e-06
+  1.3663542631547898e-05 8.128844456223305e-06]
+ [3.5422610835667e-06 4.8750989662949e-06 1.4010018276167102e-05
+  2.6752913981908932e-05 4.821506536245579e-06 1.0127592759090476e-05
+  1.64637003763346e-05 1.7856875274446793e-05 7.085798188199988e-06
+  1.3663542631547898e-05 8.365416761080269e-06]
+ [3.5422610835667e-06 2.9823484055668814e-06 2.0033692635479383e-05
+  2.6752913981908932e-05 7.661968083993997e-06 3.0613355193054304e-05
+  2.2669975805911236e-05 1.7856875274446793e-05 3.805529559031129e-06
+  9.113650776271243e-06 8.365416761080269e-06]
+ [1.0338217180105858e-05 2.9823484055668814e-06 1.22306591947563e-05
+  5.989752480672905e-06 7.661968083993997e-06 -1.8067064502247376e-06 --
+  2.6994612198905088e-05 3.805529559031129e-06 9.93858884612564e-06
+  5.95659503233037e-06]
+ [1.643397263251245e-05 2.3552678612759337e-05 1.22306591947563e-05
+  3.357146852067672e-05 2.274967118864879e-05 1.720252839731984e-05 --
+  3.5503007893566974e-06 2.463743294356391e-05 9.93858884612564e-06
+  5.107533070258796e-06]
+ [1.643397263251245e-05 2.032586417044513e-05 3.069417653023265e-05
+  3.357146852067672e-05 5.3608282541972585e-06 2.3645032342756167e-05
+  1.4121245840215124e-05 3.5503007893566974e-06 1.7894151824293658e-05
+  6.726403171342099e-06 4.946864009980345e-06]
+ [-- 2.032586417044513e-05 4.950715265295003e-06 4.1676059936435195e-07
+  4.5746564865112305e-06 8.116168828564696e-06 2.2665213691652752e-05
+  1.9741626601899043e-05 1.7894151824293658e-05 2.076986856991425e-05
+  2.1395570001914166e-05]
+ [6.25277016297332e-06 1.616561166883912e-05 6.608122021134477e-06
+  1.4511646440951154e-05 1.710533251753077e-05 8.116168828564696e-06
+  2.2665213691652752e-05 1.3761089576291852e-05 2.3234122636495158e-05
+  1.119864646170754e-05 1.309175968344789e-05]
+ [-4.346998593973694e-06 1.3383075383899268e-05 1.854230504250154e-05
+  1.4511646440951154e-05 2.3756143491482362e-05 2.5908313546096906e-05
+  1.8569581925476086e-06 1.7643544197198935e-05 1.905545468616765e-05
+  2.332133226445876e-05 1.309175968344789e-05]
+ [1.952239290403668e-05 1.3383075383899268e-05 1.4969725270930212e-05
+  1.7489817764726467e-05 2.3756143491482362e-05 2.2289710614131764e-05
+  1.8516411728342064e-05 6.418390057660872e-06 1.905545468616765e-05
+  1.7234020560863428e-05 2.3787488316884264e-05]
+ [2.11383230634965e-05 2.648720510478597e-05 1.4969725270930212e-05
+  1.1602377526287455e-05 2.6327590603614226e-05 2.2289710614131764e-05
+  1.8516411728342064e-05 1.4247228136810008e-05 1.2591519407578744e-05
+  1.7234020560863428e-05 1.2487286767282058e-05]
+ [2.11383230634965e-05 1.997027538891416e-05 1.937335036927834e-05
+  1.1602377526287455e-05 1.7117061361204833e-05 1.868194704002235e-05
+  2.082713763229549e-05 1.4247228136810008e-05 2.4384768039453775e-05
+  1.2748902008752339e-05 1.2487286767282058e-05]
+ [1.445294310542522e-05 1.997027538891416e-05 9.929099178407341e-06
+  2.1125391867826693e-05 1.4700159226777032e-05 1.868194704002235e-05 --
+  1.7169208149425685e-05 2.4384768039453775e-05 1.2715190678136423e-05
+  1.9096464711765293e-06]
+ [1.1002701285178773e-05 1.5282379536074586e-05 9.929099178407341e-06
+  1.2035911822749767e-05 9.221266736858524e-06 1.3530579963116907e-05 --
+  1.9879898900398985e-05 1.4567100151907653e-05 1.2715190678136423e-05
+  7.1515978561365046e-06]]
+2023-10-23 00:00:00 | NO2: [[1.7865913832793012e-05 1.0917028703261167e-05 1.0917028703261167e-05
+  1.6399866581195965e-05 9.883547136269044e-06 3.5550697248254437e-06
+  1.2123566193622537e-05 4.830154466617387e-06 1.3059200682619121e-05
+  1.2666703696595505e-05 1.2666703696595505e-05]
+ [1.7865913832793012e-05 1.3592193681688514e-05 1.3592193681688514e-05
+  1.6399866581195965e-05 1.0546446901571471e-05 1.0546446901571471e-05
+  1.2123566193622537e-05 1.3342523743631318e-05 1.162270473287208e-05
+  1.162270473287208e-05 7.184251444414258e-06]
+ [3.198126069037244e-05 3.198126069037244e-05 -- 9.8858326964546e-06
+  1.0546446901571471e-05 2.048640453722328e-05 1.307527691096766e-05
+  1.3342523743631318e-05 1.7603486412554048e-05 1.7603486412554048e-05
+  7.184251444414258e-06]
+ [-- -- -- 3.843448212137446e-05 3.843448212137446e-05
+  2.048640453722328e-05 2.4026274331845343e-05 9.528803843750211e-07
+  9.528803843750211e-07 1.0853794265131e-05 1.4654661754320841e-05]
+ [-- -- 1.996600360598677e-07 3.843448212137446e-05 -- --
+  2.4026274331845343e-05 1.4311992345028557e-05 1.4311992345028557e-05
+  1.0853794265131e-05 8.987044566310942e-06]
+ [-- -- 1.880165837064851e-05 -- -- 6.6871371018351056e-06 --
+  1.4311992345028557e-05 6.9048346631461754e-06 2.235480678791646e-05
+  8.987044566310942e-06]
+ [-- -- 1.880165837064851e-05 1.6863763448782265e-05
+  1.865086414909456e-05 6.6871371018351056e-06 5.80495543545112e-06
+  5.80495543545112e-06 6.9048346631461754e-06 3.794036047111149e-06
+  1.5931071175145917e-05]
+ [-- -- 1.6863763448782265e-05 1.6863763448782265e-05
+  1.8989439922734164e-05 1.713509118417278e-05 5.80495543545112e-06
+  1.775844611984212e-05 2.0621764633688144e-05 3.794036047111149e-06
+  8.631251148472074e-06]
+ [-- -- 2.1510022634174675e-05 2.1510022634174675e-05
+  1.8989439922734164e-05 1.2695896657533012e-05 1.2695896657533012e-05
+  1.775844611984212e-05 1.834092654462438e-05 1.3511113138520159e-05
+  1.3511113138520159e-05]
+ [-- 7.784694389556535e-06 7.784694389556535e-06 2.8538992410176434e-05
+  2.20361580431927e-05 1.2695896657533012e-05 1.0818795999512076e-05
+  1.7393718735547736e-05 1.834092654462438e-05 1.1189728866156656e-05
+  1.1189728866156656e-05]
+ [3.8019547901058104e-06 7.784694389556535e-06 1.544142833154183e-05
+  2.8538992410176434e-05 2.4372784537263215e-05 1.0818795999512076e-05
+  1.0818795999512076e-05 1.4645806004409678e-05 1.2152308045187965e-05
+  1.1189728866156656e-05 1.7196718545164913e-05]
+ [1.3292683433974162e-05 1.544142833154183e-05 1.6977468476397917e-05
+  1.745727968227584e-05 2.4372784537263215e-05 2.1514557374757715e-05
+  1.5786908988957293e-05 1.4645806004409678e-05 1.8844966689357534e-05
+  1.8844966689357534e-05 1.7196718545164913e-05]
+ [1.3292683433974162e-05 1.0595786989142653e-05 1.6977468476397917e-05
+  2.0535244402708486e-05 2.1514557374757715e-05 2.1514557374757715e-05
+  1.0172884685744066e-05 1.4855277186143212e-05 1.8844966689357534e-05
+  1.5466886907233857e-05 2.1370777176343836e-05]
+ [1.0595786989142653e-05 1.0595786989142653e-05 1.5142671145440545e-05
+  2.0535244402708486e-05 1.946925294760149e-05 1.946925294760149e-05
+  1.0172884685744066e-05 1.69279046531301e-05 1.69279046531301e-05
+  1.5466886907233857e-05 2.0944609786965884e-05]
+ [2.1246822143439204e-05 2.1246822143439204e-05 1.5142671145440545e-05
+  1.3300024875206873e-05 1.3300024875206873e-05 1.1167779121024068e-05
+  5.406088803283637e-06 1.69279046531301e-05 1.3095959729980677e-05
+  1.3089728781778831e-05 2.0944609786965884e-05]]
+2023-10-24 00:00:00 | NO2: [[2.5263003408326767e-05 2.7886171665159054e-05 2.566106923040934e-05
+  2.566106923040934e-05 2.108197077177465e-05 1.663743387325667e-05
+  1.663743387325667e-05 3.2693827961338684e-05 1.603111195436213e-05
+  1.214302574226167e-05 5.24183587913285e-06]
+ [9.68728545558406e-06 1.5210464880510699e-05 2.566106923040934e-05
+  2.2173235265654512e-05 1.7601010767975822e-05 1.4076250408834312e-05
+  1.4076250408834312e-05 3.2693827961338684e-05 1.629330472496804e-05
+  1.629330472496804e-05 5.24183587913285e-06]
+ [9.68728545558406e-06 2.0439198124222457e-05 2.2173235265654512e-05
+  2.2173235265654512e-05 2.125635728589259e-05 1.4076250408834312e-05
+  2.6207319024251774e-05 2.1257568732835352e-05 1.629330472496804e-05
+  2.2701564375893213e-05 1.6524123566341586e-05]
+ [2.7830677936435677e-05 2.0439198124222457e-05 2.0607069018296897e-05
+  1.8383829228696413e-05 2.125635728589259e-05 1.6049767509684898e-05
+  2.6207319024251774e-05 1.9346998669789173e-05 2.2701564375893213e-05
+  2.2701564375893213e-05 7.950494364195038e-06]
+ [2.7017034881282598e-05 2.0607069018296897e-05 2.0607069018296897e-05
+  2.587908056739252e-05 1.6049767509684898e-05 7.088963684509508e-06
+  1.2245215657458175e-05 1.9346998669789173e-05 1.852587956818752e-05
+  9.655062967794947e-06 7.950494364195038e-06]
+ [2.7017034881282598e-05 3.538008968462236e-05 3.538008968462236e-05
+  2.587908056739252e-05 7.088963684509508e-06 7.088963684509508e-06
+  1.1182883099536411e-05 1.852587956818752e-05 1.852587956818752e-05
+  4.627236648957478e-06 8.887845979188569e-06]
+ [-- 3.538008968462236e-05 -- 7.159936103562359e-06 7.088963684509508e-06
+  9.350413165520877e-06 1.1182883099536411e-05 1.4905101579643087e-06
+  1.4905101579643087e-06 4.627236648957478e-06 2.2048532628105022e-05]
+ [-- -- -- 1.4922925402061082e-05 1.4922925402061082e-05
+  2.595466503407806e-05 2.025047615461517e-05 2.025047615461517e-05
+  1.003854504233459e-05 1.2469452485674992e-05 2.2048532628105022e-05]
+ [-- 1.042198982759146e-05 1.9536866602720693e-05 1.4922925402061082e-05
+  1.649910700507462e-05 2.595466503407806e-05 2.4644012228236534e-05
+  2.4644012228236534e-05 1.003854504233459e-05 1.9076009266427718e-05
+  1.9076009266427718e-05]
+ [1.042198982759146e-05 1.042198982759146e-05 1.085812345991144e-05
+  1.649910700507462e-05 1.649910700507462e-05 1.552509820612613e-05
+  2.4644012228236534e-05 6.571218364115339e-06 1.9232822523918003e-05
+  1.9076009266427718e-05 1.721905209706165e-05]
+ [1.2614716069947463e-05 1.2614716069947463e-05 1.085812345991144e-05
+  1.8756465578917414e-05 1.8756465578917414e-05 1.973709549929481e-05
+  6.571218364115339e-06 6.571218364115339e-06 1.9733159206225537e-05
+  1.721905209706165e-05 1.721905209706165e-05]
+ [1.741687265166547e-05 1.1449150406406261e-05 1.642077404540032e-05
+  1.642077404540032e-05 1.848768806667067e-05 1.973709549929481e-05
+  2.529378434701357e-05 1.70778002939187e-05 1.9733159206225537e-05
+  1.689828968665097e-05 1.689828968665097e-05]
+ [1.784822416084353e-05 1.1449150406406261e-05 2.0821862563025206e-05
+  2.0821862563025206e-05 1.848768806667067e-05 2.529378434701357e-05
+  2.529378434701357e-05 1.7818038031691685e-05 1.6044077710830607e-05
+  1.6044077710830607e-05 9.845457498158794e-06]
+ [2.246462827315554e-05 1.9106530089629814e-05 2.0821862563025206e-05
+  1.7473304978921078e-05 1.0677642421796918e-05 3.2239349820883945e-05
+  3.2239349820883945e-05 1.7818038031691685e-05 2.1774967535748146e-05
+  2.1774967535748146e-05 9.845457498158794e-06]
+ [2.246462827315554e-05 2.281828892591875e-05 1.7473304978921078e-05
+  1.7473304978921078e-05 1.939399226102978e-05 3.2239349820883945e-05
+  1.365875777992187e-05 2.355555261601694e-05 2.1774967535748146e-05
+  8.334849553648382e-06 1.6645522919134237e-05]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="pengubahan-data-netcdf-ke-csv-untuk-analisis-lanjutan">
+<h2><strong>Pengubahan Data NetCDF ke CSV untuk Analisis Lanjutan</strong><a class="headerlink" href="#pengubahan-data-netcdf-ke-csv-untuk-analisis-lanjutan" title="Link to this heading">#</a></h2>
+<hr class="docutils" />
+<p>Kode yang berikut ini digunakan untuk membaca keluaran data dari Sentinel-5P dengan format NetCDF (. nc) yang sudah diunduh dari layanan openEO untuk daerah Manyar. Pertama-tama, file NO2_in_Manyar. nc dibuka dengan menggunakan pustaka netCDF4, dan kemudian semua variabel yang terdapat di dalamnya ditampilkan untuk memverifikasi ketersediaan data yang dibutuhkan — yaitu variabel waktu (“t”) dan konsentrasi NO₂ (“NO2”). Berikutnya, nilai waktu diubah dari format offset (misalnya “days since 1970-01-01”) menjadi format tanggal yang sesungguhnya dengan menggunakan fungsi num2date().</p>
+<p>Setelah itu, data konsentrasi NO₂ diekstraksi dan dirata-ratakan secara spasial dengan memanfaatkan fungsi np. nanmean(), sehingga menghasilkan satu nilai rata-rata untuk setiap waktu pengamatan. Data yang telah dirata-rata ini kemudian digabungkan dengan nilai waktu dalam sebuah DataFrame pandas, yang mempermudah proses analisis atau visualisasi lebih lanjut. Terakhir, DataFrame tersebut disimpan ke dalam file dengan format CSV bernama NO2_Manyar. csv, dan beberapa baris awal ditampilkan untuk memastikan bahwa proses konversi dan penyimpanan berjalan sesuai rencana.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">netCDF4</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">file_path</span> <span class="o">=</span> <span class="s2">&quot;/content/NO2_in_Manyar.nc&quot;</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">netCDF4</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">ds</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">variables</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+
+<span class="n">time_var</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s2">&quot;t&quot;</span><span class="p">][:]</span>
+<span class="n">no2_var</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s2">&quot;NO2&quot;</span><span class="p">][:]</span>
+
+<span class="n">time_units</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s2">&quot;t&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">units</span>
+<span class="n">dates</span> <span class="o">=</span> <span class="n">netCDF4</span><span class="o">.</span><span class="n">num2date</span><span class="p">(</span><span class="n">time_var</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="n">time_units</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">no2_var</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="n">no2_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">no2_var</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="nb">tuple</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">no2_var</span><span class="o">.</span><span class="n">ndim</span><span class="p">)))</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">no2_mean</span> <span class="o">=</span> <span class="n">no2_var</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="n">dates</span><span class="p">,</span>
+    <span class="s2">&quot;NO2&quot;</span><span class="p">:</span> <span class="n">no2_mean</span>
+<span class="p">})</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;/content/NO2_Manyar.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; File NO2_Manyar.csv berhasil dibuat.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;netCDF4.Dataset&#39;&gt;
+root group (NETCDF4_CLASSIC data model, file format HDF5):
+    Conventions: CF-1.9
+    institution: Copernicus Data Space Ecosystem openEO API - 0.68.0a10.dev20250930+2976
+    description: 
+    title: 
+    dimensions(sizes): t(728), y(15), x(11)
+    variables(dimensions): int32 t(t), float64 x(x), float64 y(y), |S1 crs(), float32 NO2(t, y, x)
+    groups: 
+dict_keys([&#39;t&#39;, &#39;x&#39;, &#39;y&#39;, &#39;crs&#39;, &#39;NO2&#39;])
+ File NO2_Manyar.csv berhasil dibuat.
+                  time       NO2
+0  2023-10-15 00:00:00  0.000007
+1  2023-10-16 00:00:00  0.000013
+2  2023-10-17 00:00:00  0.000018
+3  2023-10-18 00:00:00  0.000014
+4  2023-10-19 00:00:00  0.000014
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="konversi-data-no2-menjadi-format-supervised-learning">
+<h2><strong>Konversi Data NO₂ Menjadi Format Supervised Learning</strong><a class="headerlink" href="#konversi-data-no2-menjadi-format-supervised-learning" title="Link to this heading">#</a></h2>
+<hr class="docutils" />
+<p>Kode berikut ini digunakan untuk menyiapkan dataset deret waktu NO₂ agar bisa diterapkan dalam model prediksi atau pembelajaran mesin. Pertama-tama, file yang diekspor dari NO2_Manyar. csv dibuka dengan menggunakan pandas, kemudian kolom waktu diubah menjadi format tanggal dan dijadikan sebagai indeks waktu. Proses interpolasi dengan cara method=’time’ dilakukan untuk mengisi nilai yang hilang (NaN) berdasarkan urutan waktunya, sehingga data menjadi lebih kontinu dan siap untuk analisis deret waktu tanpa menghilangkan pola temporal yang ada.</p>
+<p>Kemudian, kode ini menciptakan dataset dalam format pembelajaran terawasi dengan menghasilkan fitur lag — yaitu nilai NO₂ dari beberapa hari yang lalu (NO2(t-1), NO2(t-2), dan seterusnya) hingga n_lags = 4. Nilai-nilai lag tersebut digunakan sebagai variabel input untuk memperkirakan nilai NO₂ saat ini (NO2(t)). Setelah kolom-kolom lag telah dibuat, baris yang memiliki nilai NaN akibat pergeseran waktu dihapus agar data bersih dan siap digunakan dalam pelatihan model prediksi. Hasil akhirnya adalah tabel yang terstruktur secara berurutan, memperlihatkan hubungan antara kondisi masa lalu dan kondisi terkini konsentrasi NO₂ di area Manyar.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;/content/NO2_Manyar.csv&quot;</span><span class="p">)</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+
+<span class="n">n_lags</span> <span class="o">=</span> <span class="mi">4</span>
+
+<span class="n">supervised</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_lags</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">supervised</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;NO2(t-</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+<span class="n">supervised</span><span class="p">[</span><span class="s1">&#39;NO2(t)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span>
+
+<span class="n">supervised</span> <span class="o">=</span> <span class="n">supervised</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;📅 Head of Data:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">supervised</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;📦 Data info:&quot;</span><span class="p">)</span>
+<span class="n">supervised</span><span class="o">.</span><span class="n">info</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NO2    0
+dtype: int64
+📅 Head of Data:
+            NO2(t-4)  NO2(t-3)  NO2(t-2)  NO2(t-1)    NO2(t)
+time                                                        
+2023-10-19  0.000007  0.000013  0.000018  0.000014  0.000014
+2023-10-20  0.000013  0.000018  0.000014  0.000014  0.000013
+2023-10-21  0.000018  0.000014  0.000014  0.000013  0.000017
+2023-10-22  0.000014  0.000014  0.000013  0.000017  0.000015
+2023-10-23  0.000014  0.000013  0.000017  0.000015  0.000015
+
+📦 Data info:
+</pre></div>
+</div>
+<div class="output text_html"><div style="max-width:800px; border: 1px solid var(--colab-border-color);"><style>
+      pre.function-repr-contents {
+        overflow-x: auto;
+        padding: 8px 12px;
+        max-height: 500px;
+      }
+
+      pre.function-repr-contents.function-repr-contents-collapsed {
+        cursor: pointer;
+        max-height: 100px;
+      }
+    </style>
+    <pre style="white-space: initial; background:
+         var(--colab-secondary-surface-color); padding: 8px 12px;
+         border-bottom: 1px solid var(--colab-border-color);"><b>pandas.core.frame.DataFrame.info</b><br/>def info(verbose: bool | None=None, buf: WriteBuffer[str] | None=None, max_cols: int | None=None, memory_usage: bool | str | None=None, show_counts: bool | None=None) -&gt; None</pre><pre class="function-repr-contents function-repr-contents-collapsed" style=""><a class="filepath" style="display:none" href="#">/usr/local/lib/python3.12/dist-packages/pandas/core/frame.py</a>Print a concise summary of a DataFrame.
+
+This method prints information about a DataFrame including
+the index dtype and columns, non-null values and memory usage.
+
+Parameters
+----------
+verbose : bool, optional
+    Whether to print the full summary. By default, the setting in
+    ``pandas.options.display.max_info_columns`` is followed.
+buf : writable buffer, defaults to sys.stdout
+    Where to send the output. By default, the output is printed to
+    sys.stdout. Pass a writable buffer if you need to further process
+    the output.
+max_cols : int, optional
+    When to switch from the verbose to the truncated output. If the
+    DataFrame has more than `max_cols` columns, the truncated output
+    is used. By default, the setting in
+    ``pandas.options.display.max_info_columns`` is used.
+memory_usage : bool, str, optional
+    Specifies whether total memory usage of the DataFrame
+    elements (including the index) should be displayed. By default,
+    this follows the ``pandas.options.display.memory_usage`` setting.
+
+    True always show memory usage. False never shows memory usage.
+    A value of &#x27;deep&#x27; is equivalent to &quot;True with deep introspection&quot;.
+    Memory usage is shown in human-readable units (base-2
+    representation). Without deep introspection a memory estimation is
+    made based in column dtype and number of rows assuming values
+    consume the same memory amount for corresponding dtypes. With deep
+    memory introspection, a real memory usage calculation is performed
+    at the cost of computational resources. See the
+    :ref:`Frequently Asked Questions &lt;df-memory-usage&gt;` for more
+    details.
+show_counts : bool, optional
+    Whether to show the non-null counts. By default, this is shown
+    only if the DataFrame is smaller than
+    ``pandas.options.display.max_info_rows`` and
+    ``pandas.options.display.max_info_columns``. A value of True always
+    shows the counts, and False never shows the counts.
+
+Returns
+-------
+None
+    This method prints a summary of a DataFrame and returns None.
+
+See Also
+--------
+DataFrame.describe: Generate descriptive statistics of DataFrame
+    columns.
+DataFrame.memory_usage: Memory usage of DataFrame columns.
+
+Examples
+--------
+&gt;&gt;&gt; int_values = [1, 2, 3, 4, 5]
+&gt;&gt;&gt; text_values = [&#x27;alpha&#x27;, &#x27;beta&#x27;, &#x27;gamma&#x27;, &#x27;delta&#x27;, &#x27;epsilon&#x27;]
+&gt;&gt;&gt; float_values = [0.0, 0.25, 0.5, 0.75, 1.0]
+&gt;&gt;&gt; df = pd.DataFrame({&quot;int_col&quot;: int_values, &quot;text_col&quot;: text_values,
+...                   &quot;float_col&quot;: float_values})
+&gt;&gt;&gt; df
+    int_col text_col  float_col
+0        1    alpha       0.00
+1        2     beta       0.25
+2        3    gamma       0.50
+3        4    delta       0.75
+4        5  epsilon       1.00
+
+Prints information of all columns:
+
+&gt;&gt;&gt; df.info(verbose=True)
+&lt;class &#x27;pandas.core.frame.DataFrame&#x27;&gt;
+RangeIndex: 5 entries, 0 to 4
+Data columns (total 3 columns):
+ #   Column     Non-Null Count  Dtype
+---  ------     --------------  -----
+ 0   int_col    5 non-null      int64
+ 1   text_col   5 non-null      object
+ 2   float_col  5 non-null      float64
+dtypes: float64(1), int64(1), object(1)
+memory usage: 248.0+ bytes
+
+Prints a summary of columns count and its dtypes but not per column
+information:
+
+&gt;&gt;&gt; df.info(verbose=False)
+&lt;class &#x27;pandas.core.frame.DataFrame&#x27;&gt;
+RangeIndex: 5 entries, 0 to 4
+Columns: 3 entries, int_col to float_col
+dtypes: float64(1), int64(1), object(1)
+memory usage: 248.0+ bytes
+
+Pipe output of DataFrame.info to buffer instead of sys.stdout, get
+buffer content and writes to a text file:
+
+&gt;&gt;&gt; import io
+&gt;&gt;&gt; buffer = io.StringIO()
+&gt;&gt;&gt; df.info(buf=buffer)
+&gt;&gt;&gt; s = buffer.getvalue()
+&gt;&gt;&gt; with open(&quot;df_info.txt&quot;, &quot;w&quot;,
+...           encoding=&quot;utf-8&quot;) as f:  # doctest: +SKIP
+...     f.write(s)
+260
+
+The `memory_usage` parameter allows deep introspection mode, specially
+useful for big DataFrames and fine-tune memory optimization:
+
+&gt;&gt;&gt; random_strings_array = np.random.choice([&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;], 10 ** 6)
+&gt;&gt;&gt; df = pd.DataFrame({
+...     &#x27;column_1&#x27;: np.random.choice([&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;], 10 ** 6),
+...     &#x27;column_2&#x27;: np.random.choice([&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;], 10 ** 6),
+...     &#x27;column_3&#x27;: np.random.choice([&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;], 10 ** 6)
+... })
+&gt;&gt;&gt; df.info()
+&lt;class &#x27;pandas.core.frame.DataFrame&#x27;&gt;
+RangeIndex: 1000000 entries, 0 to 999999
+Data columns (total 3 columns):
+ #   Column    Non-Null Count    Dtype
+---  ------    --------------    -----
+ 0   column_1  1000000 non-null  object
+ 1   column_2  1000000 non-null  object
+ 2   column_3  1000000 non-null  object
+dtypes: object(3)
+memory usage: 22.9+ MB
+
+&gt;&gt;&gt; df.info(memory_usage=&#x27;deep&#x27;)
+&lt;class &#x27;pandas.core.frame.DataFrame&#x27;&gt;
+RangeIndex: 1000000 entries, 0 to 999999
+Data columns (total 3 columns):
+ #   Column    Non-Null Count    Dtype
+---  ------    --------------    -----
+ 0   column_1  1000000 non-null  object
+ 1   column_2  1000000 non-null  object
+ 2   column_3  1000000 non-null  object
+dtypes: object(3)
+memory usage: 165.9 MB</pre>
+      <script>
+      if (google.colab.kernel.accessAllowed && google.colab.files && google.colab.files.view) {
+        for (const element of document.querySelectorAll('.filepath')) {
+          element.style.display = 'block'
+          element.onclick = (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            google.colab.files.view(element.textContent, 3646);
+          };
+        }
+      }
+      for (const element of document.querySelectorAll('.function-repr-contents')) {
+        element.onclick = (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          element.classList.toggle('function-repr-contents-collapsed');
+        };
+      }
+      </script>
+      </div></div></div>
+</div>
+</section>
+<section id="normalisasi-data-untuk-model-supervised-learning">
+<h2><strong>Normalisasi Data untuk Model Supervised Learning</strong><a class="headerlink" href="#normalisasi-data-untuk-model-supervised-learning" title="Link to this heading">#</a></h2>
+<hr class="docutils" />
+<p>Kode berikut digunakan untuk menskalakan data waktu sebelum diterapkan dalam pelatihan model prediksi. Langkah pertama adalah membagi data menjadi dua bagian: variabel fitur (<code class="docutils literal notranslate"><span class="pre">X</span></code>) yang mencakup empat nilai lag NO₂ sebelumnya (<code class="docutils literal notranslate"><span class="pre">NO2(t-4)</span></code> sampai <code class="docutils literal notranslate"><span class="pre">NO2(t-1)</span></code>) dan variabel target (<code class="docutils literal notranslate"><span class="pre">y</span></code>) yang terdiri dari nilai NO₂ yang sekarang (<code class="docutils literal notranslate"><span class="pre">NO2(t)</span></code>). Proses ini sangat penting agar model dapat memahami keterkaitan antara nilai-nilai sebelumnya dan nilai saat ini. Kemudian, digunakan <code class="docutils literal notranslate"><span class="pre">MinMaxScaler</span></code> dari paket <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> untuk mengatur skala data ke rentang 0 hingga 1, sehingga setiap fitur berada pada skala yang setara dan tidak ada satu pun yang menguasai model karena perbedaan satuan atau nilai.</p>
+<p>Setelah normalisasi selesai, hasil transformasi disimpan dalam variabel <code class="docutils literal notranslate"><span class="pre">X_scaled</span></code> dan dikonversi kembali menjadi DataFrame <code class="docutils literal notranslate"><span class="pre">normalized_df</span></code> dengan nama kolom yang sama seperti sebelumnya agar lebih mudah dibaca dan diproses lebih lanjut. Normalisasi ini sangat krusial dalam algoritma pembelajaran mesin seperti LSTM, RNN, atau regresi linier, karena membantu model untuk konvergen lebih cepat dan meningkatkan stabilitas perhitungan numerik. Bagian akhir dari kode menunjukkan perbandingan antara data sebelum dan sesudah normalisasi untuk memastikan bahwa proses penskalaan dilakukan secara akurat.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">MinMaxScaler</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">supervised</span><span class="p">[[</span><span class="s1">&#39;NO2(t-4)&#39;</span><span class="p">,</span> <span class="s1">&#39;NO2(t-3)&#39;</span><span class="p">,</span> <span class="s1">&#39;NO2(t-2)&#39;</span><span class="p">,</span> <span class="s1">&#39;NO2(t-1)&#39;</span><span class="p">]]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">supervised</span><span class="p">[</span><span class="s1">&#39;NO2(t)&#39;</span><span class="p">]</span>
+
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">(</span><span class="n">feature_range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">X_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="n">supervised</span> <span class="o">=</span> <span class="n">supervised</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+<span class="n">normalized_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X_scaled</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sebelum normalisasi:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">X</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Sesudah normalisasi:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">normalized_df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sebelum normalisasi:
+             NO2(t-4)  NO2(t-3)  NO2(t-2)  NO2(t-1)
+time                                              
+2023-10-19  0.000007  0.000013  0.000018  0.000014
+2023-10-20  0.000013  0.000018  0.000014  0.000014
+2023-10-21  0.000018  0.000014  0.000014  0.000013
+2023-10-22  0.000014  0.000014  0.000013  0.000017
+2023-10-23  0.000014  0.000013  0.000017  0.000015
+
+Sesudah normalisasi:
+    NO2(t-4)  NO2(t-3)  NO2(t-2)  NO2(t-1)
+0  0.410881  0.509829  0.592648  0.515581
+1  0.509829  0.592648  0.515581  0.512861
+2  0.592648  0.515581  0.512861  0.503735
+3  0.515581  0.512861  0.503735  0.571636
+4  0.512861  0.503735  0.571636  0.529179
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="pemodelan-time-series-no2-menggunakan-k-nearest-neighbors-knn-regressor">
+<h2><strong>Pemodelan Time Series NO₂ Menggunakan K-Nearest Neighbors (KNN) Regressor</strong><a class="headerlink" href="#pemodelan-time-series-no2-menggunakan-k-nearest-neighbors-knn-regressor" title="Link to this heading">#</a></h2>
+<hr class="docutils" />
+<p>Kode berikut dipakai untuk membangun serta menilai model prediksi konsentrasi NO₂ dengan memanfaatkan algoritma K-Nearest Neighbors (KNN) Regressor. Pertama, dataset dibagi menjadi dua segmen, yaitu data latihan (80%) dan data pengujian (20%) dengan memanfaatkan fungsi <code class="docutils literal notranslate"><span class="pre">train_test_split</span></code> tanpa mengacak urutannya (<code class="docutils literal notranslate"><span class="pre">shuffle=False</span></code>) agar urutan waktu tetap terjaga dalam analisis deret waktu. Empat nilai lag sebelumnya (<code class="docutils literal notranslate"><span class="pre">NO2(t-4)</span></code> hingga <code class="docutils literal notranslate"><span class="pre">NO2(t-1)</span></code>) digunakan sebagai fitur input (<code class="docutils literal notranslate"><span class="pre">X</span></code>), sedangkan nilai NO₂ saat ini (<code class="docutils literal notranslate"><span class="pre">NO2(t)</span></code>) berfungsi sebagai target (<code class="docutils literal notranslate"><span class="pre">y</span></code>). Dua versi dari model KNN diuji berdasarkan parameter <code class="docutils literal notranslate"><span class="pre">weights</span></code>, yaitu <code class="docutils literal notranslate"><span class="pre">&quot;uniform&quot;</span></code> (semua tetangga punya bobot yang sama) dan <code class="docutils literal notranslate"><span class="pre">&quot;distance&quot;</span></code> (tetangga yang lebih dekat memiliki bobot lebih besar).</p>
+<p>Setelah itu, kode menghitung Root Mean Squared Error (RMSE) dan koefisien determinasi (R²) untuk menilai performa model pada data pengujian. RMSE memberikan gambaran tentang seberapa besar kesalahan rata-rata prediksi dibandingkan dengan nilai sebenarnya, sedangkan R² menunjukkan seberapa efektif model dalam menjelaskan variasi data (nilai yang semakin mendekati 1 menandakan kinerja yang lebih baik). Hasil prediksi dan data sebenarnya kemudian divisualisasikan menggunakan matplotlib, di mana grafik atas menunjukkan model dengan bobot <code class="docutils literal notranslate"><span class="pre">&quot;uniform&quot;</span></code> dan grafik bawah dengan bobot <code class="docutils literal notranslate"><span class="pre">&quot;distance&quot;</span></code>. Visualisasi ini mempermudah analisis kemampuan model KNN dalam mengikuti pola perubahan NO₂ berdasarkan data historis di kawasan Sumenep.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn</span><span class="w"> </span><span class="kn">import</span> <span class="n">neighbors</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">r2_score</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">supervised</span><span class="p">[[</span><span class="s1">&#39;NO2(t-4)&#39;</span><span class="p">,</span> <span class="s1">&#39;NO2(t-3)&#39;</span><span class="p">,</span> <span class="s1">&#39;NO2(t-2)&#39;</span><span class="p">,</span> <span class="s1">&#39;NO2(t-1)&#39;</span><span class="p">]]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">supervised</span><span class="p">[</span><span class="s1">&#39;NO2(t)&#39;</span><span class="p">]</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">n_neighbors</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">weights</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="s1">&#39;uniform&#39;</span><span class="p">,</span> <span class="s1">&#39;distance&#39;</span><span class="p">]):</span>
+    <span class="n">knn</span> <span class="o">=</span> <span class="n">neighbors</span><span class="o">.</span><span class="n">KNeighborsRegressor</span><span class="p">(</span><span class="n">n_neighbors</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">weights</span><span class="p">)</span>
+    <span class="n">knn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">knn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+    <span class="n">rmse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+    <span class="n">r2</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y_test</span><span class="p">)),</span> <span class="n">y_test</span><span class="p">,</span> <span class="s1">&#39;darkorange&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Actual&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y_pred</span><span class="p">)),</span> <span class="n">y_pred</span><span class="p">,</span> <span class="s1">&#39;navy&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Prediction&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;KNeighborsRegressor (K=</span><span class="si">{</span><span class="n">n_neighbors</span><span class="si">}</span><span class="s2">, weight=&#39;</span><span class="si">{</span><span class="n">weights</span><span class="si">}</span><span class="s2">&#39;</span><span class="se">\n</span><span class="s2">RMSE=</span><span class="si">{</span><span class="n">rmse</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">, R2=</span><span class="si">{</span><span class="n">r2</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/7c4803d97e8ff13be36bacec8e139c9bf9effb3222e10389e5179d51e3b685da.png" src="_images/7c4803d97e8ff13be36bacec8e139c9bf9effb3222e10389e5179d51e3b685da.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#membaca-hasil-ekspor-netcdf-dan-mengekstrak-variabel-no2"><strong>Membaca Hasil Ekspor NetCDF dan Mengekstrak Variabel NO₂</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pengubahan-data-netcdf-ke-csv-untuk-analisis-lanjutan"><strong>Pengubahan Data NetCDF ke CSV untuk Analisis Lanjutan</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#konversi-data-no2-menjadi-format-supervised-learning"><strong>Konversi Data NO₂ Menjadi Format Supervised Learning</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalisasi-data-untuk-model-supervised-learning"><strong>Normalisasi Data untuk Model Supervised Learning</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pemodelan-time-series-no2-menggunakan-k-nearest-neighbors-knn-regressor"><strong>Pemodelan Time Series NO₂ Menggunakan K-Nearest Neighbors (KNN) Regressor</strong></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Silvia Renata Suwandi
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
